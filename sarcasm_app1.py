@@ -139,13 +139,13 @@ def generate_file_name():
 def push_file_to_github():
     # GitHub repository details
     repo_owner = 'Sana555-Attar'
-    repo_name = 'updated_data_repo1857'
+    repo_name = 'sarcasm_detectors_MLops'
     branch_name = 'main'
     file_path = "myfile1.txt"
     folder_name = "updated_new_version_data"
 
     # GitHub access token (you can generate one in your GitHub account settings)
-    access_token = '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'
+    access_token = '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'
 
     # Create a PyGithub instance using the access token
     g = Github(access_token)
