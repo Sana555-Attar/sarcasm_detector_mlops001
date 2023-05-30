@@ -100,19 +100,19 @@ class SklearnTrainer():
 
         
 
-        current_dir = os.getcwd()
-        folder_name = "sklearn_confusion_matrix"
-        file_extension = ".png"
+        #current_dir = os.getcwd()
+        #folder_name = "sklearn_confusion_matrix"
+        #file_extension = ".png"
 
         # Create a timestamp for the file name
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        #timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
 
-        file_name = f"confusion_matrix_{timestamp}{file_extension}"
+        #file_name = f"confusion_matrix_{timestamp}{file_extension}"
 
-        path_to_save_folder = os.path.join(current_dir, folder_name)
-        os.makedirs(path_to_save_folder, exist_ok=True)
+        #path_to_save_folder = os.path.join(current_dir, folder_name)
+        #os.makedirs(path_to_save_folder, exist_ok=True)
 
-        path_to_save_file = os.path.join(path_to_save_folder, file_name)
+        #path_to_save_file = os.path.join(path_to_save_folder, file_name)
 
         plot_confusion_matrix(
             y_test,
@@ -120,7 +120,7 @@ class SklearnTrainer():
             ["NORMAL", "SARCASTIC"],
             figsize=(8, 8),
             title=f"{self.model} Confusion Matrix",
-            path_to_save_fig=path_to_save_file
+            path_to_save_fig="./sklearn_confusion_matrix"
             #sana added line above
         )
 

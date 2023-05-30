@@ -119,11 +119,7 @@ def get_updated_dataset():
     dataset1=Dataset.get(dataset_project="sarcasm_detector",
                                                    dataset_name="sarcasm_dataset",
                                                    alias="sarcasm_dataset")
-    current_dir = os.getcwd()
-    file_name = "myfile1.txt"
-    path_to_save_file = os.path.join(current_dir, file_name)
-
-    with open(path_to_save_file, "w") as f:
+    with open("/home/oem/Desktop/Sarcasam_Detector_may23/tf_sarcasm_Detector/myfile1.txt", "w") as f:
         f.write(f"The new dataset of sarcasm_detector added in ClearML server with id {dataset1.id}")
     print("created text file to push on to github")
 
@@ -139,13 +135,13 @@ def generate_file_name():
 def push_file_to_github():
     # GitHub repository details
     repo_owner = 'Sana555-Attar'
-    repo_name = 'sarcasm_detectors_MLops'
+    repo_name = 'updated_data_repo1857'
     branch_name = 'main'
     file_path = "myfile1.txt"
     folder_name = "updated_new_version_data"
 
     # GitHub access token (you can generate one in your GitHub account settings)
-    access_token = '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'
+    access_token ='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'
 
     # Create a PyGithub instance using the access token
     g = Github(access_token)
@@ -221,12 +217,3 @@ with demo:
     #get_updated_dataset()
 demo.launch()#share=True)logo_image = gr.Image(value="/home/oem/Demo1Abhijit/tf_sarcasm_Detector/JARVIS_Logo1.png", shape=[], source="upload", show_label=False)
 #task.close()
-
-
-
-
-
-
-
-
-
