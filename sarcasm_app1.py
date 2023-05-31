@@ -145,7 +145,7 @@ def push_file_to_github():
     folder_name = "updated_new_version_data"
 
     # GitHub access token (you can generate one in your GitHub account settings)
-    access_token = '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'
+    access_token = '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'
 
     # Create a PyGithub instance using the access token
     g = Github(access_token)
