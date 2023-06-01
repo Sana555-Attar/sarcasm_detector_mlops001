@@ -19,6 +19,6 @@ jobs:
           pip install -r requirements.txt
           python train_sklearn.py  # generate plot.png
           # Create CML report
-          cat sklearn_metrics.txt >> report.md
-          echo '![](./confusion_matrix.png "Confusion Matrix")' >> report.md
-          cml comment create report.md
+          ##cat sklearn_metrics.txt >> report.md
+          ##echo '![](./confusion_matrix.png "Confusion Matrix")' >> report.md
+          ##cml comment create report.md
