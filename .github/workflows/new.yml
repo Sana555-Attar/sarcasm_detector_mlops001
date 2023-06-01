@@ -1,0 +1,24 @@
+name: CML
+on: [push]
+jobs:
+  train-and-report-sarcasm:
+    runs-on: ubuntu-latest
+    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+    env:
+      REPO_TOKEN: ${{ secrets.CML_TOKEN }}
+      CLEARML_API_ACCESS_KEY: ${{ secrets.CLEARML_ACCESS_KEY }}
+      CLEARML_API_SECRET_KEY: ${{ secrets.CLEARML_SECRET_KEY }}
+      CLEARML_API_HOST: ${{ secrets.CLEARML_API_HOST }}
+      CLEARML_WEB_HOST: https://app.clear.ml
+      CLEARML_FILES_HOST: https://files.clear.ml
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start the task
+        id: launch_task
+        run: |
+          pip install -r requirements.txt
+          python train_sklearn.py  # generate plot.png
+          # Create CML report
+          cat sklearn_metrics.txt >> report.md
+          echo '![](./confusion_matrix.png "Confusion Matrix")' >> report.md
+          cml comment create report.md
