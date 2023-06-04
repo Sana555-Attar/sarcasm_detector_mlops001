@@ -110,7 +110,7 @@ def create_clearml_dataset_version(csv_filename, amount, counter):
         [os.remove(path) for path in paths]
 
         get_updated_dataset()
-        push_file_to_github()
+        #push_file_to_github()
 
         return f"{uuid4()}.csv", 0, "0 labeled samples"
     return csv_filename, amount, counter
@@ -145,7 +145,7 @@ def push_file_to_github():
     folder_name = "updated_new_version_data"
 
     # GitHub access token (you can generate one in your GitHub account settings)
-    access_token ='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'
+    access_token ='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'
 
     # Create a PyGithub instance using the access token
     g = Github(access_token)
