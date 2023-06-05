@@ -31,9 +31,9 @@ def get_model_And_tokenizer(trainig_task_id):
 
     return model, tokenizer
 
-model, tokenizer = get_model_And_tokenizer('0628a88df5bb48eb91d58982bb421bcd')
+model, tokenizer = get_model_And_tokenizer('eb429be149614ec3ba8870417d2ff25f')
 
-sklearn_model_path = Model(model_id="8c186c7a599543cd9fd7a908ac7fba9a").get_local_copy()
+sklearn_model_path = Model(model_id="a53442a71c3f487aadac825fd3efdf6e").get_local_copy()
 
 sklearn_pipeline = joblib.load(sklearn_model_path)
 
