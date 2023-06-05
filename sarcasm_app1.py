@@ -110,7 +110,7 @@ def create_clearml_dataset_version(csv_filename, amount, counter):
         [os.remove(path) for path in paths]
 
         get_updated_dataset()
-        #push_file_to_github()
+        push_file_to_github()
 
         return f"{uuid4()}.csv", 0, "0 labeled samples"
     return csv_filename, amount, counter
