@@ -145,8 +145,8 @@ def push_file_to_github():
     folder_name = "updated_new_version_data"
 
     # GitHub access token (you can generate one in your GitHub account settings)
-    #access_token ='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'
-    access_token = os.environ.get('secrets.CML_TOKEN')
+    access_token ='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'
+    #access_token = os.environ.get('secrets.CML_TOKEN')
 
     # Create a PyGithub instance using the access token
     g = Github(access_token)
@@ -165,7 +165,7 @@ def push_file_to_github():
     branch = repo.get_branch(branch_name)
 
     # Create a new file in the repository
-    repo.create_file(file_name, "Updated new version data", file_content, branch=branch.name)
+    repo.create_file(file_name, file_content, branch=branch.name)
     print("File uploaded to GitHub in the 'updated_new_version_data' folder.")
 
 
