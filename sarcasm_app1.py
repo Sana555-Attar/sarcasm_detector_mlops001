@@ -146,7 +146,7 @@ def push_file_to_github():
 
     # GitHub access token (you can generate one in your GitHub account settings)
     #access_token ='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'
-    access_token = os.environ.get('CML_REPO_TOKEN')
+    access_token = os.environ.get('secrets.CML_TOKEN')
 
     # Create a PyGithub instance using the access token
     g = Github(access_token)
