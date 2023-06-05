@@ -165,8 +165,8 @@ def push_file_to_github():
     branch = repo.get_branch(branch_name)
 
     # Create a new file in the repository
-    repo.create_file(file_name, file_content, branch=branch.name)
-    print("File uploaded to GitHub in the 'updated_new_version_data' folder.")
+    repo.create_file(file_name,"Updated new version data", file_content, branch=branch.name)
+    print("File uploaded to GitHub in the, 'updated_new_version_data' folder.")
 
 
 
