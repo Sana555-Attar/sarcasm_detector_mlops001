@@ -21,5 +21,5 @@ jobs:
           python train_sklearn.py  # generate plot.png
           # Create CML report
           cat sklearn_metrics.txt >> report.md
-          echo '![](confusion_matrix.png "Confusion Matrix")' >> report.md
+          echo '![](sklearn_confusion_matrix.png "Confusion Matrix")' >> report.md
           cml comment create report.md
