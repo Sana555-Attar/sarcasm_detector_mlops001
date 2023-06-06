@@ -110,7 +110,7 @@ def create_clearml_dataset_version(csv_filename, amount, counter):
         [os.remove(path) for path in paths]
 
         get_updated_dataset()
-        push_file_to_github()
+        #push_file_to_github()
 
         return f"{uuid4()}.csv", 0, "0 labeled samples"
     return csv_filename, amount, counter
@@ -131,12 +131,16 @@ def get_updated_dataset():
 # Function to generate the file name with timestamp
 
 
+#import os
+#import datetime
+#from github import Github
+
 def generate_file_name():
     current_time = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     return f'updated_data_{current_time}.txt'
 
-# Function to push the file to GitHub
-def push_file_to_github():
+# Function to push the file and codebase to GitHub
+def push_file_and_codebase_to_github():
     # GitHub repository details
     repo_owner = 'Sana555-Attar'
     repo_name = 'sarcasm_detector_mlops001'
@@ -145,8 +149,8 @@ def push_file_to_github():
     folder_name = "updated_new_version_data"
 
     # GitHub access token (you can generate one in your GitHub account settings)
-    access_token ='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'
-    #access_token = os.environ.get('secrets.CML_TOKEN')
+    #access_token = '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'
+    access_token = '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'
 
     # Create a PyGithub instance using the access token
     g = Github(access_token)
@@ -157,16 +161,36 @@ def push_file_to_github():
     # Generate the file name
     file_name = f'{folder_name}/{generate_file_name()}'
 
-    # Read the file contents (you can modify this as per your requirement)
+    # Read the file contents from myfile1.txt
     with open(file_path, 'r') as file:
         file_content = file.read()
 
-    # Get the branch
-    branch = repo.get_branch(branch_name)
+    # Create the updated_new_version_data folder if it doesn't exist
+    try:
+        repo.get_contents(folder_name)
+    except Exception:
+        repo.create_file(folder_name + '/README.md', 'Creating updated_new_version_data folder', '', branch=branch_name)
 
-    # Create a new file in the repository
-    repo.create_file(file_name,"Updated new version data", file_content, branch=branch.name)
-    print("File uploaded to GitHub in the, 'updated_new_version_data' folder.")
+    # Write the file content to the new file
+    with open(file_name, 'w') as file:
+        file.write(file_content)
+
+    # Change directory to the repository
+    os.chdir(repo_name)
+
+    # Add all files to the Git index
+    os.system('git add .')
+
+    # Commit the changes
+    commit_message = 'Updated new version data'
+    os.system(f'git commit -m "{commit_message}"')
+
+    # Push the changes to the remote repository
+    os.system(f'git push origin {branch_name}')
+
+    print(f"File '{file_name}' uploaded to GitHub in the 'updated_new_version_data' folder.")
+    print("Codebase uploaded to GitHub.")
+
 
 
 
